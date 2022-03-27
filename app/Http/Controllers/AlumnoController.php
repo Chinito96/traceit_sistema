@@ -89,6 +89,12 @@ class AlumnoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alumno = Alumno::find($id);
+        $calificaciones = $alumno->calificaciones();
+
+        $calificaciones->delete();
+        $alumno->delete();
+        
+        return redirect('/')->with('message', 'Se eliminó el alumno.');
     }
 }

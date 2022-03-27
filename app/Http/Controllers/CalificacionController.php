@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use App\Models\Calificacion;
 use Illuminate\Http\Request;
 
 class CalificacionController extends Controller
@@ -23,9 +24,9 @@ class CalificacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('calificaciones.create', compact('id'));
     }
 
     /**
@@ -36,7 +37,23 @@ class CalificacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $calificacion = Calificacion::where([['materia', $request->materia],['alumno_id', $request->alumno_id]])->first();
+        if ($calificacion === null) {
+            $calificacion = new Calificacion;
+            $calificacion->alumno_id = $request->alumno_id;
+            $calificacion->materia = $request->materia;
+            $calificacion->calificacion = $request->calificacion;
+            $calificacion->save();
+
+            return redirect('calificaciones/'.$request->alumno_id)->with('message', 'Se ha capturado una nueva calificacion');
+        } else {
+            $calificacion->alumno_id = $request->alumno_id;
+            $calificacion->materia = $request->materia;
+            $calificacion->calificacion = $request->calificacion;
+            $calificacion->save();
+
+            return redirect('calificaciones/'.$request->alumno_id)->with('message', 'Se ha actualizado la calificacion');
+        }
     }
 
     /**
@@ -81,7 +98,10 @@ class CalificacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $calificacion = Calificacion::find($id);
+        $calificacion->delete();
+        
+        return redirect()->back()->with('message', 'Se eliminó la calificación.');
     }
     
 }
