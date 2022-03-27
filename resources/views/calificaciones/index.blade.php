@@ -8,7 +8,7 @@
 <h4>Calificaciones de {{ $alumno->nombre.' '.$alumno->apellidos }}</h4>
 <div class="row my-4">
     <div class="col-12">
-        <a href="{{ url('calificaciones/crear/'.$alumno->id) }}" class="btn btn-primary">Asignar o Editar Calificacion</a>
+        <a href="{{ url('calificaciones/crear/'.$alumno->id) }}" class="btn btn-primary">Asignar o Editar Calificación</a>
     </div>
     <div class="col-12">
         <table class="table table-striped">
@@ -16,7 +16,7 @@
                 <tr>
                     <th>#</th>
                     <th>Materia</th>
-                    <th>Calificacion</th>
+                    <th>Calificación</th>
                 </tr>
             </thead>
             <tbody>

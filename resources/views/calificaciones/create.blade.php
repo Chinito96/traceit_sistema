@@ -9,7 +9,7 @@
             <div class="mb-3">
                 <label for="materia" class="form-label">Materias</label>
                 <select name="materia" class="form-control">
-                    <option value="Matematicas">Matematicas</option>
+                    <option value="Matemáticas">Matemáticas</option>
                     <option value="Cálculo">Cálculo</option>
                     <option value="Español">Español</option>
                     <option value="Ciencias">Ciencias</option>
@@ -17,7 +17,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="calificcion" class="form-label">Calificacion</label>
+                <label for="calificacion" class="form-label">Calificación</label>
                 <input type="number" max="100" min="0" name="calificacion" value="0" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Registrar</button>
